@@ -1,0 +1,14 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: aplicacion
+  cloud:
+    config:
+      uri: http://localhost:8888
+
+logging:
+  level:
+    com.microservicios: DEBUG
+    org.springframework.data.r2dbc: DEBUG

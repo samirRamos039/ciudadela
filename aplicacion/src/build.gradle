@@ -1,0 +1,38 @@
+plugins {
+    id 'org.springframework.boot'
+    id 'io.spring.dependency-management'
+    id 'org.jetbrains.kotlin.jvm'
+    id 'org.jetbrains.kotlin.plugin.spring'
+}
+
+dependencies {
+    
+    implementation project(':domain')
+    implementation project(':infraestructura')
+    
+    // Web Reactivo
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+    implementation 'io.projectreactor.kotlin:reactor-kotlin-extensions'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-reactor'
+    
+    // Actuator y Monitoring
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    
+    // Configuración
+    implementation 'org.springframework.cloud:spring-cloud-starter-config:4.1.0'
+    implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap:4.1.0'
+    
+    // UI (si es necesario)
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    
+    // Test
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'io.projectreactor:reactor-test'
+}
+
+bootJar {
+    archiveFileName = "aplicacion-${project.version}.jar"
+    manifest {
+        attributes('Start-Class': 'com.ciudadela.aplicacion.AplicacionApplication')
+    }
+}
